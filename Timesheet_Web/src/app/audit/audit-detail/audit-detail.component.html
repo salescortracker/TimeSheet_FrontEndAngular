@@ -1,0 +1,22 @@
+<div class="audit-detail-container">
+  <h2>Edit Audit</h2>
+  <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>User ID:</label>
+      <input type="number" formControlName="userID" />
+    </div>
+
+    <div>
+      <label>Action Type:</label>
+      <input type="text" formControlName="actionType" />
+    </div>
+
+    <div>
+      <label>Action Details:</label>
+      <textarea formControlName="actionDetails"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="auditForm.invalid">Update Audit</button>
+    <button type="button" routerLink="/audit/list">Cancel</button>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<div class="audit-create-container">
+  <h2>Create New Audit</h2>
+  <form [formGroup]="auditForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>User ID:</label>
+      <input type="number" formControlName="userID" />
+      <div *ngIf="auditForm.get('userID')?.invalid && auditForm.get('userID')?.touched">
+        User ID is required
+      </div>
+    </div>
+
+    <div>
+      <label>Action Type:</label>
+      <input type="text" formControlName="actionType" />
+      <div *ngIf="auditForm.get('actionType')?.invalid && auditForm.get('actionType')?.touched">
+        Action Type is required
+      </div>
+    </div>
+
+    <div>
+      <label>Action Details:</label>
+      <textarea formControlName="actionDetails"></textarea>
+      <div *ngIf="auditForm.get('actionDetails')?.invalid && auditForm.get('actionDetails')?.touched">
+        Action Details are required
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="auditForm.invalid">Create Audit</button>
+    <button type="button" routerLink="/audit/list">Cancel</button>
+  </form>
+</div>

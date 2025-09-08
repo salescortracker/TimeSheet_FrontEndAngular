@@ -1,0 +1,95 @@
+<div class="audit-list-container">
+<div class="login-card">
+    
+
+   <div class="header">
+    <div class="logo-box">
+      <img src="../../../img/cor-logo.png" alt="App Logo"> <!-- Put your logo file here -->
+    </div>
+    
+  </div>
+   
+<div class="container mt-12">
+  <h3 class="mb-3">Audit Records</h3>
+  <hr/>
+  <div class="col-md-12">
+<div class="col-md-8">
+
+</div>
+<div class="col-md-4  text-md-end text-start mt-2 mt-md-0">
+        <button class="btn btn-google btn-social" routerLink="/audit/create">
+          Create New Audit
+        </button>
+      </div>
+  </div>
+
+  <!-- Optional search/filter placeholder -->
+  <div class="mb-3">
+    <input type="text" class="form-control" placeholder="Search audits..." >
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Audit ID</th>
+          <th>User ID</th>
+          <th>Action Type</th>
+          <th>Action Details</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+         <tr *ngIf="(audits ).length === 0">
+          <td colspan="5" class="text-center text-muted">No records found</td>
+        </tr>
+        <tr *ngFor="let audit of audits ">
+          <td>
+            <span *ngIf="audit.auditID; else auditIDPlaceholder">{{ audit.auditID }}</span>
+            <ng-template #auditIDPlaceholder>
+              <span class="placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </span>
+            </ng-template>
+          </td>
+
+          <td>
+            <span *ngIf="audit.userID; else userIDPlaceholder">{{ audit.userID }}</span>
+            <ng-template #userIDPlaceholder>
+              <span class="placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </span>
+            </ng-template>
+          </td>
+
+          <td>
+            <span *ngIf="audit.actionType; else actionTypePlaceholder">{{ audit.actionType }}</span>
+            <ng-template #actionTypePlaceholder>
+              <span class="placeholder-glow">
+                <span class="placeholder col-6"></span>
+              </span>
+            </ng-template>
+          </td>
+
+          <td>
+            <span *ngIf="audit.actionDetails; else actionDetailsPlaceholder">{{ audit.actionDetails }}</span>
+            <ng-template #actionDetailsPlaceholder>
+              <span class="placeholder-glow">
+                <span class="placeholder col-8"></span>
+              </span>
+            </ng-template>
+          </td>
+
+          <td>
+            <button class="btn btn-sm btn-primary me-1">View</button>
+            <button class="btn btn-sm btn-warning me-1">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteAudit(audit.auditID)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  </div>
+</div>
